@@ -1,5 +1,5 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="Ignews" />
+  <img src="./.github/logo.svg" alt="Ignews" />
 
 &#xa0;
 
@@ -46,7 +46,7 @@
 
 ## :dart: About
 
-Describe your project
+Objeto desenvolvido durante o Bootcamp Ignite da Rocketseat.
 
 ## :sparkles: Features
 
@@ -58,7 +58,8 @@ Describe your project
 
 The following tools were used in this project:
 
-- [Nextjs](https://pt-br.reactjs.org/)
+- [Nextjs](https://nextjs.org/)
+- [Strapi](https://strapi.io/)
 - [TypeScript](https://www.typescriptlang.org/)
 
 ## :white_check_mark: Requirements
