@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { query as q } from 'faunadb';
-import { stripe } from '../../services/stripe';
 import { getSession } from 'next-auth/client';
+import { query as q } from 'faunadb';
 import { fauna } from '../../services/fauna';
+import { stripe } from '../../services/stripe';
 
 type User = {
   ref: {
@@ -13,9 +13,9 @@ type User = {
   };
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'POST') {
-    const session = await getSession({ req });
+export default async (request: NextApiRequest, response: NextApiResponse) => {
+  if (request.method === 'POST') {
+    const session = await getSession({ req: request });
 
     const user = await fauna.query<User>(
       q.Get(q.Match(q.Index('user_by_email'), q.Casefold(session.user.email)))
@@ -50,9 +50,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       cancel_url: process.env.STRIPE_CANCEL_URL,
     });
 
-    return res.status(200).json({ sessionId: stripeCheckoutSession.id });
+    return response.status(200).json({ sessionId: stripeCheckoutSession.id });
   } else {
-    res.setHeader('allow', 'POST');
-    res.status(405).end('Method not allowed');
+    response.setHeader('Allow', 'POST');
+    response.status(405).send('Method not allowed');
   }
 };

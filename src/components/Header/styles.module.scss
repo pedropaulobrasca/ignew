@@ -36,7 +36,7 @@
 
       &.active {
         color: var(--white);
-        font-weight: bolder;
+        font-weight: bold;
       }
 
       &.active::after {
@@ -45,14 +45,14 @@
         border-radius: 3px 3px 0 0;
         width: 100%;
         position: absolute;
-        bottom: 0;
+        bottom: 1px;
         left: 0;
         background: var(--yellow-500);
       }
     }
   }
 
-  button {
+  > button {
     margin-left: auto;
   }
 }
